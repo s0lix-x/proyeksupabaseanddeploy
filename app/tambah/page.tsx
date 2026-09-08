@@ -11,13 +11,14 @@ export default function TambahSiswa() {
   const [nis, setNis] = useState("");
   const [nama, setNama] = useState("");
   const [kelas, setKelas] = useState("");
+  const [status, setStatus] = useState("");
 
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
-    if (!nis || !nama || !kelas) {
+    if (!nis || !nama || !kelas || !status) {
       alert("Semua data harus diisi");
       return;
     }
@@ -30,6 +31,7 @@ export default function TambahSiswa() {
       nis,
       nama,
       kelas,
+      status,
     });
 
     if (error) {
@@ -91,6 +93,18 @@ export default function TambahSiswa() {
                 onChange={(e) => setKelas(e.target.value)}
                 className="w-full rounded-lg border p-3 outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Contoh: XI RPL 1"
+              />
+            </div>
+
+            <div>
+              <label className="mb-2 block font-medium">Status</label>
+
+              <input
+                type="text"
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
+                className="w-full rounded-lg border p-3 outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Contoh: Aktif"
               />
             </div>
 
